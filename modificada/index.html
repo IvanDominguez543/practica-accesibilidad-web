@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<lang="es">
+<html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
 
 <header class="top" id="inicio">
   <div class="identity">
-    <img src="imagenes/biblioteca-general.jpg" alt="Logotipo de la Universidad Pública">
+    <img src="imagenes/biblioteca-general.jpg" alt="Logotipo de la Universidad Pública - Red de Bibliotecas">
     <div>
       <p>Universidad Pública</p>
       <h1>Red de Bibliotecas Universitarias</h1>
@@ -34,7 +34,7 @@
     <li><a href="#formacion">Formación</a></li>
     <li><a href="#noticias">Noticias</a></li>
     <li>
-      <a href="#mas" id="btn-mas" aria-expanded="false" aria-controls="submenu" onclick="var sm=document.getElementById('submenu'); sm.hidden=!sm.hidden; this.setAttribute('aria-expanded', !sm.hidden);">Más ▾</a>
+      <a href="#mas" id="menu-mas-btn" aria-expanded="false" aria-controls="submenu" onclick="var s=document.getElementById('submenu'); var hidden=s.hidden; s.hidden=!hidden; this.setAttribute('aria-expanded', hidden);">Más ▾</a>
       <ul id="submenu" class="submenu" hidden>
         <li><a href="#horarios">Horarios</a></li>
         <li><a href="#normativa">Normativa</a></li>
@@ -44,134 +44,141 @@
 </nav>
 
 <main id="contenido">
-  <nav class="breadcrumb" aria-label="Migas de pan">
-    <a href="#inicio">Inicio</a> / <a href="#bibliotecas">Bibliotecas</a> / <span>Portal universitario</span>
-  </nav>
+  <div class="breadcrumb" aria-label="Ruta de navegación">
+    <a href="#inicio">Inicio</a> / Bibliotecas / <span>Portal universitario</span>
+  </div>
 
-  <section class="welcome" id="portada">
+  <section class="welcome" id="portada" aria-label="Bienvenida">
     <div class="welcome-text">
       <p class="eyebrow">BIBLIOTECAS · UNIVERSIDAD</p>
       <h2>Conocimiento abierto a toda la comunidad</h2>
       <p>Encuentra libros, espacios de estudio, recursos digitales y apoyo para tus trabajos académicos e investigaciones.</p>
       <a class="cta" href="#recursos">Consulta nuestros recursos</a>
       <span class="muted">Actualizado esta semana</span>
-      <p class="status"><span class="status-dot" aria-hidden="true"></span> Servicio disponible <span class="status-extra">— consulta el horario antes de venir</span></p>
+      <p class="status">
+        <span class="status-dot" aria-hidden="true"></span> 
+        <span>Servicio disponible — consulta el horario antes de venir</span>
+      </p>
     </div>
-    <img class="hero-img" src="imagenes/portada-biblioteca.jpg" alt="Estudiantes en la sala principal de lectura de la biblioteca">
+    <img class="hero-img" src="imagenes/portada-biblioteca.jpg" alt="Estudiantes consultando libros y trabajando en las salas de estudio de la biblioteca">
   </section>
 
-  <section id="recursos" class="search-area">
+  <section id="recursos" class="search-area" aria-label="Buscador del catálogo">
     <div>
       <h2>Busca en la biblioteca</h2>
       <p>Localiza libros, revistas, trabajos académicos y otros materiales.</p>
     </div>
     <form class="searchform" action="#resultados" role="search">
-      <label for="campo-busqueda" class="sr-only">Término de búsqueda</label>
-      <input id="campo-busqueda" type="search" name="q" placeholder="Escribe título, autor o palabra clave">
+      <label for="search-input" class="sr-only">Buscar por título, autor o palabra clave</label>
+      <input type="search" id="search-input" name="q" placeholder="Escribe título, autor o palabra clave" autocomplete="off">
       
-      <label for="tipo-catalogo" class="sr-only">Tipo de recurso</label>
-      <select id="tipo-catalogo" name="tipo">
+      <label for="search-type" class="sr-only">Tipo de recurso</label>
+      <select id="search-type" name="tipo">
         <option>Todo el catálogo</option>
         <option>Libros</option>
         <option>Revistas</option>
         <option>Recursos electrónicos</option>
       </select>
-      <button type="submit" aria-label="Buscar en el catálogo">Buscar 🔎</button>
+      <button type="submit" aria-label="Buscar en el catálogo">🔎 Buscar</button>
     </form>
     <p class="hint">También puedes consultar el <a href="#catalogo">catálogo completo</a>.</p>
-    <div id="resultados" class="results"><strong>Consejo:</strong> utiliza varias palabras para afinar la búsqueda.</div>
+    <div id="resultados" class="results" role="status" aria-live="polite">
+      <strong>Consejo:</strong> utiliza varias palabras para afinar la búsqueda.
+    </div>
   </section>
 
-  <section id="bibliotecas">
+  <section id="bibliotecas" aria-label="Directorio de bibliotecas">
     <div class="section-heading">
       <div>
         <p class="eyebrow">ENCUENTRA TU ESPACIO</p>
         <h2>Bibliotecas y espacios</h2>
       </div>
-      <a href="#todas">Ver todas las bibliotecas</a>
+      <a href="#todas" aria-label="Ver todas las bibliotecas">Ver todas</a>
     </div>
-    <div class="filterbar">
+
+    <div class="filterbar" role="group" aria-label="Filtrar por campus">
       <span>Filtrar por campus:</span>
-      <a class="filter selected" href="#campus-centro">Centro</a>
+      <a class="filter selected" href="#campus-centro" aria-current="page">Centro</a>
       <a class="filter" href="#campus-norte">Norte</a>
       <a class="filter" href="#campus-sur">Sur</a>
     </div>
+
     <div class="library-grid">
       <article class="library-card">
-        <img src="imagenes/biblioteca-derecho.jpg" alt="Edificio y sala de la Biblioteca Histórica">
+        <img src="imagenes/biblioteca-derecho.jpg" alt="Fachada e interior de la Biblioteca Histórica">
         <div class="card-body">
           <h3>Biblioteca Histórica</h3>
           <p>Fondos antiguos, manuscritos y colecciones patrimoniales.</p>
-          <p class="hours"><span class="green">Abierta</span> · 09:00–20:00</p>
+          <p class="hours"><span class="green">✓ Abierta</span> · 09:00–20:00</p>
           <a href="#detalle-historica" aria-label="Más información sobre la Biblioteca Histórica">Más información</a>
         </div>
       </article>
 
       <article class="library-card">
-        <img src="imagenes/biblioteca-ciencias.jpg" alt="Sala de lectura de la Biblioteca de Humanidades">
+        <img src="imagenes/biblioteca-ciencias.jpg" alt="Zona de lectura y mesas de la Biblioteca de Humanidades">
         <div class="card-body">
           <h3>Biblioteca de Humanidades</h3>
           <p>Espacios de lectura y recursos para el estudio.</p>
-          <p class="hours"><span class="red">Cerrada</span> · Abre a las 10:00</p>
+          <p class="hours"><span class="red">✗ Cerrada</span> · Abre a las 10:00</p>
           <a href="#detalle-humanidades" aria-label="Leer más sobre la Biblioteca de Humanidades">Leer más</a>
         </div>
       </article>
 
       <article class="library-card">
-        <img src="imagenes/biblioteca-general.jpg" alt="Estanterías de la Biblioteca de Ciencias">
+        <img src="imagenes/biblioteca-general.jpg" alt="Estanterías de fondos científicos en la Biblioteca de Ciencias">
         <div class="card-body">
           <h3>Biblioteca de Ciencias</h3>
           <p>Bibliografía especializada y acceso a revistas científicas.</p>
-          <p class="hours"><span class="green">Abierta</span> · 08:30–21:00</p>
-          <a href="#detalle-ciencias" aria-label="Consultar detalles de la Biblioteca de Ciencias">Consultar</a>
+          <p class="hours"><span class="green">✓ Abierta</span> · 08:30–21:00</p>
+          <a href="#detalle-ciencias" aria-label="Consultar información de la Biblioteca de Ciencias">Consultar</a>
         </div>
       </article>
     </div>
     <p class="tiny-note">Los horarios pueden variar en periodos de exámenes.</p>
   </section>
 
-  <section id="servicios" class="services">
+  <section id="servicios" class="services" aria-label="Servicios disponibles">
     <div class="section-heading">
       <div>
         <p class="eyebrow">TE AYUDAMOS</p>
         <h2>Servicios destacados</h2>
       </div>
-      <a href="#todos-servicios">Ver todos los servicios</a>
+      <a href="#todos-servicios" aria-label="Ver todos los servicios">Ver todos</a>
     </div>
     <div class="service-list">
       <div class="service">
         <span class="symbol" aria-hidden="true">📚</span>
         <h3>Préstamo y renovación</h3>
         <p>Consulta las condiciones para llevarte documentos a casa.</p>
-        <a href="#prestamo" aria-label="Detalles sobre Préstamo y renovación">Detalles</a>
+        <a href="#prestamo" aria-label="Detalles sobre el préstamo y renovación">Detalles</a>
       </div>
       <div class="service">
         <span class="symbol" aria-hidden="true">💻</span>
         <h3>Recursos electrónicos</h3>
         <p>Accede a bases de datos, revistas y libros digitales.</p>
-        <a href="#digital" aria-label="Accede a los Recursos electrónicos">Accede aquí</a>
+        <a href="#digital" aria-label="Accede aquí a los recursos electrónicos">Accede aquí</a>
       </div>
       <div class="service">
         <span class="symbol" aria-hidden="true">👥</span>
         <h3>Salas de trabajo</h3>
         <p>Reserva espacios para estudiar en grupo.</p>
-        <button type="button" class="real-button" onclick="alert('Solicitud enviada')">Reservar sala</button>
+        <button type="button" class="action-btn" onclick="alert('Solicitud enviada')">Reservar sala</button>
       </div>
       <div class="service">
         <span class="symbol" aria-hidden="true">🎓</span>
         <h3>Formación</h3>
         <p>Aprende a buscar, evaluar y citar información académica.</p>
-        <a href="#formacion" aria-label="Más información sobre Formación">Más información</a>
+        <a href="#formacion" aria-label="Más información sobre talleres de formación">Más información</a>
       </div>
     </div>
   </section>
 
-  <section id="horarios" class="hours-section">
+  <section id="horarios" class="hours-section" aria-label="Horarios y ocupación">
     <h2>Horarios y ocupación</h2>
     <p>Consulta de un vistazo la situación de las salas principales.</p>
     <div class="table-wrap">
       <table>
-        <caption>Estado estimado de los espacios de la biblioteca</caption>
+        <caption>Estado estimado de los espacios</caption>
         <thead>
           <tr>
             <th scope="col">Espacio</th>
@@ -184,42 +191,42 @@
           <tr>
             <td>Sala general</td>
             <td>08:00–21:00</td>
-            <td><div class="bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100"><span style="width:85%"></span></div> 85%</td>
-            <td class="green">Disponible</td>
+            <td><div class="bar" role="progressbar" aria-valuenow="85" aria-valuemin="0" aria-valuemax="100" aria-label="85% ocupado"><span style="width:85%"></span></div> 85%</td>
+            <td class="green">✓ Disponible</td>
           </tr>
           <tr>
             <td>Sala de grupo</td>
             <td>09:00–20:00</td>
-            <td><div class="bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"><span style="width:45%"></span></div> 45%</td>
-            <td class="red">Completa</td>
+            <td><div class="bar" role="progressbar" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100" aria-label="45% ocupado"><span style="width:45%"></span></div> 45%</td>
+            <td class="red">■ Completa</td>
           </tr>
           <tr>
             <td>Zona silenciosa</td>
             <td>08:30–21:00</td>
-            <td><div class="bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100"><span style="width:65%"></span></div> 65%</td>
-            <td>Disponible</td>
+            <td><div class="bar" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" aria-label="65% ocupado"><span style="width:65%"></span></div> 65%</td>
+            <td class="green">✓ Disponible</td>
           </tr>
         </tbody>
       </table>
     </div>
-    <p class="legend"><span class="green">● Disponible</span> <span class="red">● Completa</span></p>
+    <p class="legend"><span class="green">✓ Disponible</span> <span class="red">■ Completa</span></p>
   </section>
 
-  <section id="noticias" class="news">
+  <section id="noticias" class="news" aria-label="Noticias y novedades">
     <div class="section-heading">
       <div>
         <p class="eyebrow">ACTUALIDAD</p>
         <h2>Noticias y novedades</h2>
       </div>
-      <a href="#archivo">Todas las noticias</a>
+      <a href="#archivo" aria-label="Ver todas las noticias del archivo">Todas las noticias</a>
     </div>
     <article class="news-feature">
-      <img src="imagenes/noticia-libros.jpg" alt="Estudiante consultando libros en la biblioteca">
+      <img src="imagenes/noticia-libros.jpg" alt="Estudiante leyendo en la zona de novedades bibliográficas">
       <div>
         <p class="date">12 de octubre de 2026</p>
         <h3>Nuevo programa de formación para estudiantes</h3>
         <p>Sesiones prácticas para mejorar las búsquedas bibliográficas y descubrir recursos especializados.</p>
-        <a href="#noticia" aria-label="Leer la noticia sobre el Nuevo programa de formación para estudiantes">Leer noticia completa</a>
+        <a href="#noticia" aria-label="Leer la noticia sobre el nuevo programa de formación">Leer noticia completa</a>
       </div>
     </article>
     <ul class="news-list">
@@ -229,25 +236,25 @@
     </ul>
   </section>
 
-  <section id="formacion" class="training">
+  <section id="formacion" class="training" aria-label="Sección de capacitación">
     <div class="training-copy">
       <p class="eyebrow">COMPETENCIAS INFORMACIONALES</p>
       <h2>Aprende a investigar</h2>
       <p>Participa en talleres sobre bases de datos, gestores bibliográficos, acceso abierto y competencias informacionales.</p>
       <a class="cta" href="#agenda">Ver calendario de talleres</a>
     </div>
-    <img src="imagenes/formacion-estudiantes.jpg" alt="Grupo de estudiantes participando en un taller de formación">
+    <img src="imagenes/formacion-estudiantes.jpg" alt="Estudiantes participando en un taller interactivo de investigación">
   </section>
 
-  <section id="acceso" class="access">
+  <section id="acceso" class="access" aria-label="Formulario de contacto y acceso">
     <h2>Acceso a los servicios</h2>
     <p>Algunos recursos electrónicos requieren identificación con la cuenta institucional.</p>
-    <form>
-      <label for="usuario">Usuario</label>
-      <input id="usuario" name="usuario" required>
+    <form action="#enviado">
+      <label for="usuario">Usuario <span class="req">*</span></label>
+      <input id="usuario" name="usuario" autocomplete="username" required aria-required="true">
 
-      <label for="correo">Correo institucional</label>
-      <input id="correo" type="email" name="correo" placeholder="ejemplo@universidad.edu" required>
+      <label for="correo">Correo institucional <span class="req">*</span></label>
+      <input id="correo" type="email" name="correo" placeholder="usuario@universidad.example" autocomplete="email" required aria-required="true">
 
       <label for="tipo-consulta">Tipo de consulta</label>
       <select id="tipo-consulta" name="tipo-consulta">
@@ -257,46 +264,50 @@
       </select>
 
       <label for="mensaje">Mensaje</label>
-      <textarea id="mensaje" name="mensaje"></textarea>
+      <textarea id="mensaje" name="mensaje" rows="4"></textarea>
 
-      <p class="error" role="alert">Hay un error en el formulario.</p>
-      <p class="required-note">* Campos obligatorios</p>
+      <p class="error" role="alert" aria-live="assertive">Hay un error en el formulario. Por favor, revisa los campos requeridos.</p>
+      <p class="required-note"><span class="req">*</span> Campos obligatorios</p>
 
       <button type="submit">Enviar consulta</button>
     </form>
-    <p class="privacy">
-      <input type="checkbox" id="privacidad">
+    
+    <div class="privacy">
+      <input type="checkbox" id="privacidad" required aria-required="true">
       <label for="privacidad">He leído y acepto la política de privacidad.</label>
-    </p>
+    </div>
   </section>
 
-  <section id="ayuda" class="help">
+  <section id="ayuda" class="help" aria-label="Centro de ayuda">
     <h2>¿Necesitas ayuda?</h2>
     <p>El equipo de biblioteca puede orientarte en el uso de los recursos y servicios.</p>
-    <p><a href="#contacto">Contacta con nosotros</a> · <a href="https://example.com" target="_blank" rel="noopener">Ayuda externa (se abre en nueva ventana)</a></p>
+    <p>
+      <a href="#contacto">Contacta con nosotros</a> · 
+      <a href="https://example.com" target="_blank" rel="noopener" aria-label="Pulsa aquí para ayuda externa (se abre en nueva ventana)">Pulsa aquí para ayuda externa</a>
+    </p>
     <details>
       <summary>Preguntas frecuentes</summary>
       <p>Consulta los requisitos para acceder desde fuera del campus.</p>
-      <a href="#faq">Más información de preguntas frecuentes</a>
+      <a href="#faq" aria-label="Más información en las preguntas frecuentes">Más información</a>
     </details>
   </section>
 
-  <section id="contacto" class="contact">
+  <section id="contacto" class="contact" aria-label="Información de contacto">
     <h2>Contacto</h2>
     <p>Servicio de Bibliotecas · Campus Universitario</p>
-    <p>Teléfono: 900 123 456 · Correo: bibliotecas@universidad.example</p>
+    <p>Teléfono: <a href="tel:900123456">900 123 456</a> · Correo: <a href="mailto:bibliotecas@universidad.example">bibliotecas@universidad.example</a></p>
     <p>Horario de atención: lunes a viernes, 9:00–14:00</p>
-    <nav aria-label="Enlaces de contacto relacionados">
+    <nav aria-label="Enlaces de contacto del pie">
       <ul>
         <li><a href="#inicio">Inicio</a></li>
         <li><a href="#servicios">Servicios</a></li>
         <li><a href="#contacto">Contacto</a></li>
       </ul>
     </nav>
-    <div class="social">
-      <a href="#red1" aria-label="Síguenos en Twitter">Twitter / X</a>
-      <a href="#red2" aria-label="Síguenos en Facebook">Facebook</a>
-      <a href="#red3" aria-label="Síguenos en Instagram">Instagram</a>
+    <div class="social" aria-label="Redes sociales">
+      <a href="#red1" aria-label="Síguenos en Twitter / X">● Twitter</a>
+      <a href="#red2" aria-label="Síguenos en Facebook">● Facebook</a>
+      <a href="#red3" aria-label="Síguenos en Instagram">● Instagram</a>
     </div>
   </section>
 </main>
@@ -308,10 +319,10 @@
   <a href="#cookies">Cookies</a>
 </footer>
 
-<div class="cookie" id="cookies" role="region" aria-label="Aviso de cookies">
-  <p>Usamos cookies para mejorar tu experiencia.</p>
-  <button onclick="document.getElementById('cookies').style.display='none'">Aceptar cookies</button>
-  <a href="#politica">Configurar preferencias de cookies</a>
+<div class="cookie" id="cookies" role="dialog" aria-label="Aviso de cookies">
+  <p>Usamos cookies para mejorar tu experiencia de navegación.</p>
+  <button type="button" onclick="document.getElementById('cookies').style.display='none'">Aceptar cookies</button>
+  <a href="#politica">Configurar preferencias</a>
 </div>
 </body>
 </html>
